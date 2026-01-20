@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: sentinel_risk_api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist the SQLite database
+      - ./data:/app/data
+      # (Optional) Mount src for hot-reloading during dev
+      # - ./src:/app/src
+    environment:
+      - PYTHONPATH=/app/src
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

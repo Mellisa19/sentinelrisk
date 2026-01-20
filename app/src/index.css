@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-graphite-900 text-slate-300 font-sans antialiased;
+}
+
+/* Custom Scrollbar for Graphite Look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-graphite-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-graphite-600 rounded-full hover:bg-graphite-500 transition-colors;
+}
